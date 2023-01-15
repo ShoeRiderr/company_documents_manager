@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\PaymentMethod;
+use App\Services\YearService;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PaymentMethodSeeder extends Seeder
+class YearSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run()
     {
-        PaymentMethod::factory()->count(5)->create();
+        (new YearService)->addYear(year: date('Y'));
     }
 }

@@ -12,10 +12,10 @@ class Invoice extends Model
     use HasFactory;
 
     public $fillable = [
+        'is_income',
         'number',
-        'amount',
-        'netto_price',
-        'value',
+        'price_netto',
+        'price_brutto',
         'invoice_date',
         'sell_date',
     ];
@@ -38,5 +38,15 @@ class Invoice extends Model
     public function paymentMethod(): BelongsTo
     {
         return $this->belongsTo(PaymentMethod::class);
+    }
+
+    public function year(): BelongsTo
+    {
+        return $this->belongsTo(Year::class);
+    }
+
+    public function month()
+    {
+        return $this->year->months->where('id', $this->month_id);
     }
 }

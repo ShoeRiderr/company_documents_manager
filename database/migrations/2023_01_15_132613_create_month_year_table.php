@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('month_year', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->timestamps();
+            $table->unsignedBigInteger('year_id');
+            $table->unsignedBigInteger('month_id');
+
+            $table->foreign('year_id')->references('id')->on('years');
+            $table->foreign('month_id')->references('id')->on('months');
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('month_year');
     }
 };

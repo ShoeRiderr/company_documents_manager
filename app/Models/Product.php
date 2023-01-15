@@ -11,7 +11,10 @@ class Product extends Model
     use HasFactory;
 
     public $fillable = [
-        'amount',
+        'name',
+        'vat_percent',
+        'price_netto',
+        'price_brutto',
     ];
 
     public function invoices(): BelongsToMany
