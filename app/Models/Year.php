@@ -16,7 +16,7 @@ class Year extends Model
 
     public function months(): BelongsToMany
     {
-        return $this->belongsToMany(Month::class);
+        return $this->belongsToMany(Month::class, 'invoice_month_year', 'year_id', 'month_id')->withPivot(['invoice_id']);
     }
 
     public function invoices(): HasMany

@@ -44,9 +44,4 @@ class Invoice extends Model
     {
         return $this->belongsTo(Year::class);
     }
-
-    public function month()
-    {
-        return $this->year->months->where('id', $this->month_id);
-    }
 }

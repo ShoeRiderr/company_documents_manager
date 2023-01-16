@@ -42,11 +42,6 @@ class InvoiceSeeder extends Seeder
                 $year = $years->random(1)->first();
             }
 
-            if (empty($months = Month::all())) {
-                $this->call(MonthSeeder::class);
-                $months = Month::all();
-            }
-
             if (empty($products = Product::all())) {
                 $products = Product::factory()->count(5)->create();
             }
@@ -63,11 +58,12 @@ class InvoiceSeeder extends Seeder
                 'products'
             )->create([
                 'year_id' => $year->id,
-                'month_id' => $months->random(1)->first(),
                 'seller_id' => $companies->first()->id,
                 'buyer_id' => $companies->last()->id,
                 'payment_method_id' => $paymentMethod->id,
-            ]);
+            ])->each(function (Invoice $invoice) use ($year) {
+                $year->months()->attach(Month::inRandomOrder()->first()->id, ['invoice_id' => $invoice->id]);
+            });
         }
     }
 }

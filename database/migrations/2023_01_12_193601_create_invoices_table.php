@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('year_id');
-            $table->unsignedBigInteger('month_id');
             $table->unsignedBigInteger('seller_id');
             $table->unsignedBigInteger('buyer_id');
             $table->unsignedBigInteger('payment_method_id');
@@ -29,7 +28,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('year_id')->references('id')->on('years');
-            $table->foreign('month_id')->references('id')->on('months');
             $table->foreign('seller_id')->references('id')->on('companies');
             $table->foreign('buyer_id')->references('id')->on('companies');
             $table->foreign('payment_method_id')->references('id')->on('payment_methods');
