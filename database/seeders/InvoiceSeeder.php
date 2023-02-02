@@ -8,6 +8,7 @@ use App\Models\Month;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Models\Year;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class InvoiceSeeder extends Seeder
@@ -58,12 +59,13 @@ class InvoiceSeeder extends Seeder
                 'products'
             )->create([
                 'year_id' => $year->id,
+                'month_id' => $month = Month::inRandomOrder()->first()->id,
                 'seller_id' => $companies->first()->id,
                 'buyer_id' => $companies->last()->id,
                 'payment_method_id' => $paymentMethod->id,
-            ])->each(function (Invoice $invoice) use ($year) {
-                $year->months()->attach(Month::inRandomOrder()->first()->id, ['invoice_id' => $invoice->id]);
-            });
+                'invoice_date' => Carbon::create($year->value, $month, $day = rand(1, 25)),
+                'sell_date' => Carbon::create($year->value, $month, $day),
+            ]);
         }
     }
 }

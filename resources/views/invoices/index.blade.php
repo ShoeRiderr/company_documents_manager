@@ -1,5 +1,6 @@
+
 @extends('layouts.app')
 
 @section('content')
-    <livewire:main-page />
+    <livewire:show-invoices />
 @endsection

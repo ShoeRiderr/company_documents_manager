@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Month extends Model
 {
@@ -13,8 +14,8 @@ class Month extends Model
         'name',
     ];
 
-    public function years(): BelongsToMany
+    public function invoices(): HasMany
     {
-        return $this->belongsToMany(Year::class, 'invoice_month_year', 'month_id', 'year_id');
+        return $this->hasMany(Invoice::class);
     }
 }

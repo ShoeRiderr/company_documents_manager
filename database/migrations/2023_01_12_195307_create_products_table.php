@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedInteger('vat_percent')->default(0);
-            $table->float('price_netto', 8, 2);
-            $table->float('price_brutto', 8, 2);
+            $table->unsignedBigInteger('price_netto');
+            $table->unsignedBigInteger('price_brutto');
             $table->timestamps();
         });
     }

@@ -17,8 +17,23 @@ class Product extends Model
         'price_brutto',
     ];
 
+    protected $casts = [
+        'price_netto' => 'integer',
+        'price_brutto' => 'integer',
+    ];
+
     public function invoices(): BelongsToMany
     {
         return $this->belongsByMany(Invoice::class);
+    }
+
+    public function setPriceNettoAttribute($value)
+    {
+        $this->attributes['price_netto'] = $value * 100;
+    }
+
+    public function setPriceBruttoAttribute($value)
+    {
+        $this->attributes['price_brutto'] = $value * 100;
     }
 }

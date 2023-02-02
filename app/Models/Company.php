@@ -11,13 +11,13 @@ class Company extends Model
     use HasFactory;
 
     public $fillable = [
+        'city_id',
         'name',
         'NIP',
         'street',
         'build_num',
         'apart_num',
         'post_code',
-        'city',
     ];
 
     public function city(): BelongsTo
