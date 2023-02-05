@@ -59,8 +59,6 @@ class InvoiceForm extends Component
 
     public function updatedProducts()
     {
-        if ($this->products) {
-            dump('ajajaja');
-        }
+        dump('ajajaja');
     }
 }

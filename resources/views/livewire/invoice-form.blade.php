@@ -57,5 +57,14 @@
             </div>
         </div>
     </div>
+    <h3 class="text-2xl">Strony</h3>
+    <div class="flex sm:flex-row flex-col sm:gap-x-4 sm:gap-y-0 gap-y-4">
+        @include('livewire.invoice.company', [
+            'side' => 'seller',
+        ])
+        @include('livewire.invoice.company', [
+            'side' => 'buyer',
+        ])
+    </div>
     @include('livewire.invoice.product-table')
 </div>

@@ -12,14 +12,8 @@ class PaymentMethod extends Model
     use HasFactory;
 
     protected $fillable = [
-        'vat_rate_id',
         'name',
     ];
-
-    public function vatRate(): BelongsTo
-    {
-        return $this->belongsTo(VatRate::class);
-    }
 
     public function invoices(): HasMany
     {

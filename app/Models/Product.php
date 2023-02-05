@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Product extends Model
@@ -27,13 +28,18 @@ class Product extends Model
         return $this->belongsByMany(Invoice::class);
     }
 
-    public function setPriceNettoAttribute($value)
+    public function vatRate(): BelongsTo
     {
-        $this->attributes['price_netto'] = $value * 100;
+        return $this->belongsTo(VatRate::class);
     }
 
-    public function setPriceBruttoAttribute($value)
+    public function setPriceNettoAttribute($value)
     {
-        $this->attributes['price_brutto'] = $value * 100;
+        $priceNetto = $this->attributes['price_netto'] = $value * 100;
+
+        $vatRate = $this->vatRate->value;
+        $vatPercent = is_numeric($vatRate) ? floatval($vatRate) : 0;
+
+        $this->attributes['price_brutto'] = $priceNetto * ((100 + $vatPercent) / 100);
     }
 }
