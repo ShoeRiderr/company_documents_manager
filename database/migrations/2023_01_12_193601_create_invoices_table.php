@@ -20,7 +20,9 @@ return new class extends Migration
             $table->unsignedBigInteger('seller_id');
             $table->unsignedBigInteger('buyer_id');
             $table->unsignedBigInteger('payment_method_id');
+            $table->unsignedBigInteger('city_id');
             $table->tinyInteger('is_income');
+            $table->string('city');
             $table->string('number');
             $table->unsignedBigInteger('price_netto');
             $table->unsignedBigInteger('price_brutto');
@@ -33,6 +35,7 @@ return new class extends Migration
             $table->foreign('seller_id')->references('id')->on('companies');
             $table->foreign('buyer_id')->references('id')->on('companies');
             $table->foreign('payment_method_id')->references('id')->on('payment_methods');
+            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 

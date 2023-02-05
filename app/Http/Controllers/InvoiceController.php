@@ -12,18 +12,22 @@ class InvoiceController extends Controller
     {
         return view('invoices.index');
     }
+
     public function create()
     {
-        return view('invoices.index');
+        return view('invoices.create');
     }
+
     public function store()
     {
         return view('invoices.index');
     }
-    public function edit()
+
+    public function edit(Invoice $invoice)
     {
-        return view('invoices.index');
+        return view('invoices.edit', compact('invoice'));
     }
+
     public function update()
     {
         return view('invoices.index');

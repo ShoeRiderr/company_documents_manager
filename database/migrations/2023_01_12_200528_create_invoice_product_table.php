@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('amount');
 
             $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('invoice_id')->references('id')->on('invoices');
+            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
         });
     }
 

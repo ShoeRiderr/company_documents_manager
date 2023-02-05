@@ -16,15 +16,9 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $priceNetto = $this->faker->numberBetween(10, 10000);
-        $vatPercent = $this->faker->numberBetween(0, 25);
-        $priceBrutto = $priceNetto * ((100 + $vatPercent) / 100);
 
         return [
             'name' => $this->faker->unique()->sentence(),
-            'vat_percent' => $vatPercent,
-            'price_netto' => $priceNetto,
-            'price_brutto' => $priceBrutto,
         ];
     }
 }

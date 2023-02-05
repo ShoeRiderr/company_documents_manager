@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class City extends Model
+class VatRate extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'name',
+        'value',
     ];
 
-    public function companies(): HasMany
+    public function products(): HasMany
     {
-        return $this->hasMany(Company::class);
+        return $this->hasMany(Product::class);
     }
 }

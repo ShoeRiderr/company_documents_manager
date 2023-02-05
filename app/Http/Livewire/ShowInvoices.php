@@ -71,4 +71,9 @@ class ShowInvoices extends Component
                 ->paginate($this->pagination),
         ]);
     }
+
+    public function deleteInvoice($invoiceId)
+    {
+        Invoice::find($invoiceId)->delete();
+    }
 }

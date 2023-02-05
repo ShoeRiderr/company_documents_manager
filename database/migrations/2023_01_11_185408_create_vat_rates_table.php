@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('vat_rates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('vat_rate_id');
-            $table->unsignedBigInteger('price_netto');
-            $table->unsignedBigInteger('price_brutto');
-            $table->timestamps();
-
-            $table->foreign('vat_rate_id')->references('id')->on('vat_rates');
+            $table->string('name')->nullable();
+            $table->string('value')->unique();
         });
     }
 
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('vat_rates');
     }
 };
