@@ -20,46 +20,73 @@
                 </td>
                 <td class="align-top px-6 py-4">
                     <textarea wire:model='products.{{ $key }}.name'
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        name="products[{{ $key }}]['name']"></textarea>
+                        class="{{ $errors->has('products.' . $key . '.name') ? 'border-rose-600' : '' }}
+                            shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="products[{{ $key }}]['name']" placeholder="Nazwa produktu"></textarea>
                 </td>
                 <td class="align-top px-6 py-4">
                     <input wire:model='products.{{ $key }}.amount'
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text" name="products[{{ $key }}]['amount']" />
+                        wire:change="onPriceNettoOrVatRateOrAmountChange({{ $key }})"
+                        class="{{ $errors->has('products.' . $key . '.amount') ? 'border-rose-600' : '' }}
+                        shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text" name="products[{{ $key }}]['amount']" placeholder="Ilość" />
                 </td>
                 <td class="align-top px-6 py-4">
                     <input wire:model='products.{{ $key }}.price_netto'
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text" name="products['price_netto'][{{ $key }}]">
+                        wire:change="onPriceNettoOrVatRateOrAmountChange({{ $key }})"
+                        class="{{ $errors->has('products.' . $key . '.price_netto') ? 'border-rose-600' : '' }}
+                            shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text" name="products['price_netto'][{{ $key }}]" placeholder="Cena netto" />
                 </td>
                 <td class="align-top px-6 py-4">
                     <input wire:model='products.{{ $key }}.price_netto_value'
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text" disabled name="products[{{ $key }}]['price_netto_value']">
+                        type="text" disabled name="products[{{ $key }}]['price_netto_value']" />
                 </td>
                 <td class="align-top px-6 py-4">
-                    <input wire:model='products.{{ $key }}.vat_percent'
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text" name="products[{{ $key }}]['vat_percent']">
+                    <select wire:model='products.{{ $key }}.vat_rate_id'
+                        wire:change="onPriceNettoOrVatRateOrAmountChange({{ $key }})"
+                        class="{{ $errors->has('products.' . $key . '.vat_rate_id') ? 'border-rose-600' : 'border-gray-200' }}
+                            block appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="text" name="products[{{ $key }}]['vat_rate_id']">
+                        @foreach ($vatRates as $vatRate)
+                            <option value="{{ $vatRate->id }}">{{ $vatRate->value }}</option>
+                        @endforeach
+                    </select>
                 </td>
                 <td class="align-top px-6 py-4">
                     <input wire:model='products.{{ $key }}.vat_amount'
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text" disabled name="products[{{ $key }}]['vat_amount']">
+                        type="text" disabled name="products[{{ $key }}]['vat_amount']" />
                 </td>
                 <td class="align-top px-6 py-4">
-                    <input wire:model='products.{{ $key }}.price_brutto'
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text" name="products[{{ $key }}]['price_brutto']">
+                    <input wire:model='products.{{ $key }}.price_brutto_value'
+                        wire:change="onPriceBruttoValueChange({{ $key }})"
+                        class="{{ $errors->has('products.' . $key . '.price_brutto_value') ? 'border-rose-600' : '' }}
+                            shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text" name="products[{{ $key }}]['price_brutto_value']"
+                        placeholder="Wartość brutto" />
                 </td>
             </tr>
         @endforeach
         <tr>
-            <td colspan="2" class="align-top px-6 py-4">
+            <td colspan="3" class="align-top px-6 py-4">
                 <button type="button" class="bg-stone-200 hover:bg-stone-400 font-bold py-2 px-4 rounded"
                     wire:click='addProduct'>Dodaj produkt</button>
-                </th>
+            </td>
+            <td class="align-top px-6 py-4">
+                <span class="font-bold">
+                    Razem:
+                </span>
+            </td>
+            <td class="align-top px-6 py-4">
+                    <input wire:model='invoice.price_netto' type="text" disabled>
+            </td>
+            <td></td>
+            <td></td>
+            <td class="align-top px-6 py-4">
+                <input wire:model='invoice.price_brutto' type="text" disabled>
+            </td>
         </tr>
     </tbody>
 </table>

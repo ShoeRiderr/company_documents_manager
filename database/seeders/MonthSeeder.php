@@ -18,6 +18,7 @@ class MonthSeeder extends Seeder
         foreach (__('general.months') as $key => $name) {
             Month::create([
                 'name' => 'general.months.' . $key,
+                'value' => $key,
             ]);
         }
     }

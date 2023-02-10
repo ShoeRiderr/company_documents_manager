@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('number');
             $table->unsignedBigInteger('price_netto');
             $table->unsignedBigInteger('price_brutto');
+            $table->unsignedBigInteger('vat_amount');
             $table->date('invoice_date');
             $table->date('sell_date');
             $table->timestamps();

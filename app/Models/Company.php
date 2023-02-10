@@ -18,6 +18,7 @@ class Company extends Model
         'build_num',
         'apart_num',
         'post_code',
+        'city',
     ];
 
     public function city(): BelongsTo

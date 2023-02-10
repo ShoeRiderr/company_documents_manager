@@ -22,6 +22,7 @@ class Invoice extends Model
         'number',
         'price_netto',
         'price_brutto',
+        'vat_amount',
         'invoice_date',
         'sell_date',
     ];
@@ -76,13 +77,23 @@ class Invoice extends Model
         $this->attributes['price_brutto'] = $value * 100;
     }
 
-    public function getPriceNettoAttribute($value)
+    public function setVatAmountAttribute($value)
+    {
+        $this->attributes['vat_amount'] = $value * 100;
+    }
+
+    public function getPriceNettoAttribute()
     {
         return number_format($this->attributes['price_netto'] / 100, 2);
     }
 
-    public function getPriceBruttoAttribute($value)
+    public function getPriceBruttoAttribute()
     {
         return number_format($this->attributes['price_brutto'] / 100, 2);
+    }
+
+    public function getVatAmountAttribute()
+    {
+        return number_format($this->attributes['vat_amount'] / 100, 2);
     }
 }

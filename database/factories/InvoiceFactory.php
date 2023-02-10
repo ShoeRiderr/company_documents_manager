@@ -24,6 +24,7 @@ class InvoiceFactory extends Factory
             'number' => $this->faker->bothify(),
             'price_netto' => $this->faker->numberBetween(100, 1000),
             'price_brutto' => $this->faker->numberBetween(100, 10000),
+            'vat_amount' => $this->faker->numberBetween(1, 100),
             'invoice_date' => Carbon::now(),
             'sell_date' => Carbon::now(),
         ];

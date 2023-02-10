@@ -12,6 +12,7 @@ class Month extends Model
 
     protected $fillable = [
         'name',
+        'value',
     ];
 
     public function invoices(): HasMany
