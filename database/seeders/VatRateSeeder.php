@@ -17,155 +17,155 @@ class VatRateSeeder extends Seeder
     {
         $data = [
             [
-                'name' => '',
-                'value' => '-',
-            ],
-            [
-                'name' => 'Nie podlega opodatkowaniu',
-                'value' => 'np.',
-            ],
-            [
-                'name' => 'Zwolniony z opodatkowania',
-                'value' => 'zw.',
-            ],
-            [
-                'name' => 'Odwrotne obciążenie',
-                'value' => 'o.o.',
-            ],
-            [
-                'name' => '',
+                'name' => '-',
                 'value' => '0',
             ],
             [
-                'name' => '',
+                'name' => 'np.',
+                'value' => '0',
+            ],
+            [
+                'name' => 'zw.',
+                'value' => '0',
+            ],
+            [
+                'name' => 'o.o.',
+                'value' => '0',
+            ],
+            [
+                'name' => '0%',
+                'value' => '0',
+            ],
+            [
+                'name' => '2.1%',
                 'value' => '2.1',
             ],
             [
-                'name' => '',
+                'name' => '2.5%',
                 'value' => '2.5',
             ],
             [
-                'name' => '',
+                'name' => '3%',
                 'value' => '3',
             ],
             [
-                'name' => '',
+                'name' => '3.7%',
                 'value' => '3.7',
             ],
             [
-                'name' => '',
+                'name' => '4%',
                 'value' => '4',
             ],
             [
-                'name' => '',
+                'name' => '4.8%',
                 'value' => '4.8',
             ],
             [
-                'name' => '',
+                'name' => '5%',
                 'value' => '5',
             ],
             [
-                'name' => '',
+                'name' => '5.5%',
                 'value' => '5.5',
             ],
             [
-                'name' => '',
+                'name' => '6%',
                 'value' => '6',
             ],
             [
-                'name' => '',
+                'name' => '6.5%',
                 'value' => '6.5',
             ],
             [
-                'name' => '',
+                'name' => '7%',
                 'value' => '7',
             ],
             [
-                'name' => '',
+                'name' => '7.7%',
                 'value' => '7.7',
             ],
             [
-                'name' => '',
+                'name' => '8%',
                 'value' => '8',
             ],
             [
-                'name' => '',
+                'name' => '8.5%',
                 'value' => '8.5',
             ],
             [
-                'name' => '',
+                'name' => '9%',
                 'value' => '9',
             ],
             [
-                'name' => '',
+                'name' => '9.5%',
                 'value' => '9.5',
             ],
             [
-                'name' => '',
+                'name' => '10%',
                 'value' => '10',
             ],
             [
-                'name' => '',
+                'name' => '12%',
                 'value' => '12',
             ],
             [
-                'name' => '',
+                'name' => '13%',
                 'value' => '13',
             ],
             [
-                'name' => '',
+                'name' => '13.5%',
                 'value' => '13.5',
             ],
             [
-                'name' => '',
+                'name' => '14%',
                 'value' => '14',
             ],
             [
-                'name' => '',
+                'name' => '15%',
                 'value' => '15',
             ],
             [
-                'name' => '',
+                'name' => '16%',
                 'value' => '16',
             ],
             [
-                'name' => '',
+                'name' => '17%',
                 'value' => '17',
             ],
             [
-                'name' => '',
+                'name' => '18%',
                 'value' => '18',
             ],
             [
-                'name' => '',
+                'name' => '19%',
                 'value' => '19',
             ],
             [
-                'name' => '',
+                'name' => '20%',
                 'value' => '20',
             ],
             [
-                'name' => '',
+                'name' => '21%',
                 'value' => '21',
             ],
             [
-                'name' => '',
+                'name' => '22%',
                 'value' => '22',
             ],
             [
-                'name' => '',
+                'name' => '23%',
                 'value' => '23',
             ],
             [
-                'name' => '',
+                'name' => '24%',
                 'value' => '24',
             ],
             [
-                'name' => '',
+                'name' => '25%',
                 'value' => '25',
             ],
             [
-                'name' => '',
+                'name' => '27%',
                 'value' => '27',
             ],
         ];

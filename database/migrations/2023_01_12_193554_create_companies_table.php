@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('NIP');
             $table->string('street');
             $table->string('build_num');
-            $table->string('apart_num');
+            $table->string('apart_num')->nullable();
             $table->string('post_code');
             $table->string('city');
             $table->timestamps();

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('vat_rates', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('value')->unique();
+            $table->string('name')->unique();
+            $table->string('value');
         });
     }
 

@@ -50,7 +50,7 @@
                             block appearance-none w-full border text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         type="text" name="products[{{ $key }}]['vat_rate_id']">
                         @foreach ($vatRates as $vatRate)
-                            <option value="{{ $vatRate->id }}">{{ $vatRate->value }}</option>
+                            <option value="{{ $vatRate->id }}">{{ $vatRate->name }}</option>
                         @endforeach
                     </select>
                 </td>
@@ -80,13 +80,46 @@
                 </span>
             </td>
             <td class="align-top px-6 py-4">
-                    <input wire:model='invoice.price_netto' type="text" disabled>
+                <span class="font-semibold">
+                    {{ $priceTotal['price_netto'] }}
+                </span>
             </td>
-            <td></td>
             <td></td>
             <td class="align-top px-6 py-4">
-                <input wire:model='invoice.price_brutto' type="text" disabled>
+                <span class="font-semibold">
+                    {{ $priceTotal['vat_amount'] }}
+                </span>
+            </td>
+            <td class="align-top px-6 py-4">
+                <span class="font-semibold">
+                    {{ $priceTotal['price_brutto'] }}
+                </span>
             </td>
         </tr>
+        @foreach ($priceTotalGroupedByVatRate as $key => $item)
+            <tr>
+                <td colspan="4"></td>
+                <td class="align-top px-6 py-4">
+                    <span class="font-semibold">
+                        {{ $item['price_netto'] }}
+                    </span>
+                </td>
+                <td class="align-top px-6 py-4">
+                    <span class="font-semibold">
+                        {{ $key }}
+                    </span>
+                </td>
+                <td class="align-top px-6 py-4">
+                    <span class="font-semibold">
+                        {{ $item['vat_amount'] }}
+                    </span>
+                </td>
+                <td class="align-top px-6 py-4">
+                    <span class="font-semibold">
+                        {{ $item['price_brutto'] }}
+                    </span>
+                </td>
+            </tr>
+        @endforeach
     </tbody>
 </table>
