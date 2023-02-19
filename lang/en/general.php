@@ -24,4 +24,7 @@ return [
         6 => 'Saturday',
         7 => 'Sunday',
     ],
+    'side_menu' => [
+        'invoices' => 'Invoices',
+    ],
 ];

@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedInteger('vat_percent')->default(0);
-            $table->float('price_netto', 8, 2);
-            $table->float('price_brutto', 8, 2);
+            $table->unsignedBigInteger('vat_rate_id');
+            $table->unsignedBigInteger('price_netto');
+            $table->unsignedBigInteger('price_brutto');
             $table->timestamps();
+
+            $table->foreign('vat_rate_id')->references('id')->on('vat_rates');
         });
     }
 

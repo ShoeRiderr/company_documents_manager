@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +17,7 @@ class DatabaseSeeder extends Seeder
             MonthSeeder::class,
             YearSeeder::class,
             PaymentMethodSeeder::class,
+            VatRateSeeder::class,
             ProductSeeder::class,
             CitySeeder::class,
             CompanySeeder::class,

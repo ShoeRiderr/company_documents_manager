@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Livewire\MainPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', MainPageController::class)->name('main_page');
+Route::get('/', MainPage::class)->name('main_page');
+
+Route::resource('invoices', InvoiceController::class);

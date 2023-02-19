@@ -21,9 +21,10 @@ class InvoiceFactory extends Factory
     {
         return [
             'is_income' => Arr::random(InvoiceType::options()),
-            'number' => (string) $this->faker->numberBetween(1000, 100000),
-            'price_netto' => $this->faker->numberBetween(100, 100000),
-            'price_brutto' => $this->faker->numberBetween(100, 100000),
+            'number' => $this->faker->bothify(),
+            'price_netto' => $this->faker->numberBetween(100, 1000),
+            'price_brutto' => $this->faker->numberBetween(100, 10000),
+            'vat_amount' => $this->faker->numberBetween(1, 100),
             'invoice_date' => Carbon::now(),
             'sell_date' => Carbon::now(),
         ];

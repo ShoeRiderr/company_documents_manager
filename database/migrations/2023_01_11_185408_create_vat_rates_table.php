@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('months', function (Blueprint $table) {
+        Schema::create('vat_rates', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('value')->unique();
+            $table->string('value');
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('months');
+        Schema::dropIfExists('vat_rates');
     }
 };

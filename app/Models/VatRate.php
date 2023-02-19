@@ -3,10 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Month extends Model
+class VatRate extends Model
 {
     public $timestamps = false;
 
@@ -15,8 +14,8 @@ class Month extends Model
         'value',
     ];
 
-    public function invoices(): HasMany
+    public function products(): HasMany
     {
-        return $this->hasMany(Invoice::class);
+        return $this->hasMany(Product::class);
     }
 }

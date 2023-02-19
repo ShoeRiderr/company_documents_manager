@@ -8,6 +8,7 @@ class MainPage extends Component
 {
     public function render()
     {
-        return view('livewire.main-page');
+        return view('livewire.main-page')
+            ->extends('layouts.app');
     }
 }
